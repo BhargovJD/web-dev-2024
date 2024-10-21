@@ -1,0 +1,14 @@
+/* This rule changes the background color of the entire body to bisque */
+body {
+    background-color: bisque;
+}
+
+/* This rule applies styles to the paragraph with the id "my-para" */
+#my-para {
+    background-color: red;
+    /* Sets the background color of the paragraph to red */
+    font-weight: bold;
+    /* Makes the text inside the paragraph bold */
+    font-family: 'Kablammo','Arima';
+    /* Google fonts */
+}
