@@ -3,33 +3,73 @@
 <html>
 
 <head>
-    <title>HTML Demo Page</title>
-
-    <!-- Internal Styles :An internal style is a way to apply CSS (Cascading Style Sheets) directly within an HTML document by placing the styles inside a <style> tag,which is typically located in the <head>section of the HTML file. Internal styles affect only the specific HTML document where they are defined,and they do not apply to other pages. -->
-    <style>
-        h1 {
-            color: red;
-        }
-    </style>
+    <title>HTML List</title>
 </head>
 
 <body>
 
-        <h1>Welcome to the HTML Demo Page</h1>
 
-        <p>This is a simple page to demonstrate the usage of internal styles in HTML</p>
+    <!-- An ordered list is used when the items need to be in a specific sequence. The list items are numbered by default, but
+    this can be customized -->
+    <h1>Ordered List</h1>
+    <ol>
+        <li>First item</li>
+        <li>Second item</li>
+        <li>Third item</li>
+    </ol>
 
-        <p>For more information, visit our
-            <a href="https://www.google.com" target="_blank">official website</a>.
-        </p>
+    <!-- With attributes
+    type: Change the numbering style (e.g., 1, a, A, i, I).
+    start: Specifies the starting number. 
+    -->
+    <ol type="A" start="3">
+        <li>Item 1</li>
+        <li>Item 2</li>
+    </ol>
 
-        <!-- The <a> tag, also known as the anchor tag, is used to create hyperlinks in HTML, which allow users to navigate to other pages, websites, or even different parts of the same page. The content between the opening and closing <a> tag becomes clickable.
 
-        Attributes: 
-        href: The href attribute defines the destination URL of the link. If href is omitted, the link won’t work.
-        target: This attribute specifies where to open the linked document. Common values are:
-        _self: Opens the link in the same tab (default behavior).
-        _blank: Opens the link in a new tab or window.-->
+    <h1>Unordered List</h1>
+    <!-- An unordered list is used when the sequence of items is not important. Items are usually marked with bullet points. -->
+    <ul>
+        <li>Item one</li>
+        <li>Item two</li>
+        <li>Item three</li>
+    </ul>
+
+    <!-- type: Can be disc, circle, or square to change the bullet style. -->
+    <ul type="square">
+        <li>First item</li>
+        <li>Second item</li>
+    </ul>
+
+
+    <h1>Description List</h1>
+    <!-- Description List -->
+    <dl>
+        <dt>Term 1</dt>
+        <dd>Description for term 1</dd>
+        <dt>Term 2</dt>
+        <dd>Description for term 2</dd>
+    </dl>
+
+
+    <h1>Nesting Lists</h1>
+    <!-- Nesting Lists -->
+    <ul>
+        <li>First item
+            <ol>
+                <li>Sub-item 1</li>
+                <li>Sub-item 2</li>
+            </ol>
+        </li>
+        <li>Second item</li>
+    </ul>
+
+
+
+
+
+
 
 </body>
 
