@@ -1,35 +1,78 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 
 <head>
-    <title>HTML Demo Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Padding and Margin Example</title>
 
-    <!-- Internal Styles :An internal style is a way to apply CSS (Cascading Style Sheets) directly within an HTML document by placing the styles inside a <style> tag,which is typically located in the <head>section of the HTML file. Internal styles affect only the specific HTML document where they are defined,and they do not apply to other pages. -->
     <style>
-        h1 {
-            color: red;
+        /* Body background color */
+        body {
+            background-color: cyan;
+        }
+
+        /* Container with padding and margin */
+        .container {
+            border: 2px solid #000;
+            padding: 20px;
+            /* Padding inside the container */
+            margin: 100px;
+            /* Margin outside the container */
+            background-color: #f0f0f0;
+        }
+
+        /* Box element inside the container */
+        .box {
+            background-color: lightblue;
+            padding: 15px;
+            /* Padding inside the box */
+            margin: 20px;
+            /* Margin outside the box */
+            border: 1px solid blue;
+        }
+
+        /* CSS descendant selector: Style for the <p> inside the header */
+        header p {
+            background-color: pink;
         }
     </style>
 </head>
 
 <body>
 
-        <h1>Welcome to the HTML Demo Page</h1>
+    <!-- Header section -->
+    <header>
+        <p>This is my header</p>
+    </header>
 
-        <p>This is a simple page to demonstrate the usage of internal styles in HTML</p>
+    <h2>Padding and Margin Example</h2>
 
-        <p>For more information, visit our
-            <a href="https://www.google.com" target="_blank">official website</a>.
-        </p>
+    <!-- Container with padding and margin -->
+    <div class="container">
+        This is a container with 20px padding and 40px margin.
 
-        <!-- The <a> tag, also known as the anchor tag, is used to create hyperlinks in HTML, which allow users to navigate to other pages, websites, or even different parts of the same page. The content between the opening and closing <a> tag becomes clickable.
+        <!-- Box inside the container -->
+        <div class="box">
+            This is a box with 15px padding and 20px margin.
+        </div>
+    </div>
 
-        Attributes: 
-        href: The href attribute defines the destination URL of the link. If href is omitted, the link won’t work.
-        target: This attribute specifies where to open the linked document. Common values are:
-        _self: Opens the link in the same tab (default behavior).
-        _blank: Opens the link in a new tab or window.-->
+    <h2>Block and Inline Elements Example</h2>
+
+    <!-- Block elements -->
+    <div>This is a block element (div). It takes up the full width available, stacking on top of the next element.</div>
+    <p>This is another block element (p). It also takes up the full width available.</p>
+    <h3>This is a block element (h3). Headings are also block elements and take up full width.</h3>
+
+    <!-- Inline elements -->
+    <span>This is an inline element (span).</span>
+    <span> Here is another inline element (span).</span>
+    <a href="#">This is an inline element (a - link).</a>
+    <strong>This is an inline element (strong).</strong>
+
+    <!-- Paragraph to explain inline elements -->
+    <p>Inline elements do not start on a new line and only take up as much width as they need.</p>
 
 </body>
 
