@@ -1,36 +1,46 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 
 <head>
-    <title>HTML Demo Page</title>
-
-    <!-- Internal Styles :An internal style is a way to apply CSS (Cascading Style Sheets) directly within an HTML document by placing the styles inside a <style> tag,which is typically located in the <head>section of the HTML file. Internal styles affect only the specific HTML document where they are defined,and they do not apply to other pages. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inline vs Inline-Block</title>
     <style>
-        h1 {
-            color: red;
+        .inline-element {
+            display: inline;
+            padding: 10px 0;
+            margin: 10px 0;
+            background-color: lightcoral;
+        }
+
+        .inline-block-element {
+            display: inline-block;
+            padding: 10px 0;
+            margin: 10px 0;
+            background-color: lightblue;
         }
     </style>
 </head>
 
 <body>
 
-        <h1>Welcome to the HTML Demo Page</h1>
+    <h3>Using Inline Element:</h3>
+    <span class="inline-element">This is an inline element</span>
+    <p>Notice how it doesn't have any padding or margin at the top and bottom.</p>
 
-        <p>This is a simple page to demonstrate the usage of internal styles in HTML</p>
-
-        <p>For more information, visit our
-            <a href="https://www.google.com" target="_blank">official website</a>.
-        </p>
-
-        <!-- The <a> tag, also known as the anchor tag, is used to create hyperlinks in HTML, which allow users to navigate to other pages, websites, or even different parts of the same page. The content between the opening and closing <a> tag becomes clickable.
-
-        Attributes: 
-        href: The href attribute defines the destination URL of the link. If href is omitted, the link won’t work.
-        target: This attribute specifies where to open the linked document. Common values are:
-        _self: Opens the link in the same tab (default behavior).
-        _blank: Opens the link in a new tab or window.-->
+    <h3>Using Inline-Block Element:</h3>
+    <span class="inline-block-element">This is an inline-block element</span>
+    <p>Now it responds to top and bottom padding and margin.</p>
 
 </body>
 
 </html>
+
+
+<!-- In HTML, inline elements (like <span>, <a>, <strong>) do not respond to top and bottom margins or padding because they
+            are meant to stay within the flow of text without breaking the line. This is a part of the inline element’s
+            behavior: they only respect left and right margins/padding, and don’t cause line breaks.
+
+            To make them respond to top and bottom margins and padding, you can change their display to inline-block.
+            The inline-block display style gives an element some properties of both inline and block elements: it
+            respects vertical margins and padding but doesn’t break onto a new line like a block element. -->

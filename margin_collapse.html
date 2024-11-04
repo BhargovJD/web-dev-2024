@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Margin Collapsing</title>
+    <style>
+        /* Style for the first box */
+        .box1 {
+            background-color: lightblue;
+            /* Light blue background for visibility */
+            margin-bottom: 30px;
+            /* Bottom margin of 30px */
+        }
+
+        /* Style for the second box */
+        .box2 {
+            background-color: lightcoral;
+            /* Light coral background for visibility */
+            margin-top: 20px;
+            /* Top margin of 20px */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- First box with a bottom margin of 30px -->
+    <div class="box1">Box 1</div>
+
+    <!-- Second box with a top margin of 20px -->
+    <div class="box2">Box 2</div>
+
+    <!--
+    Explanation of Margin Collapsing:
+    - Normally, you might expect the space between Box 1 and Box 2 to be 50px (30px + 20px).
+    - However, due to margin collapsing, only the larger margin (30px) will be applied.
+    - The space between the two boxes will be 30px instead of 50px, as the margins "collapse" together.
+    -->
+
+</body>
+
+</html>

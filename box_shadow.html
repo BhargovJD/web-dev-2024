@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Shadow Example</title>
+    <style>
+        /* Basic box with shadow */
+        /* box-shadow: offset-x offset-y blur-radius spread-radius color; */
+        .box {
+            width: 200px;
+            height: 100px;
+            background-color: lightblue;
+            margin: 50px;
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+            /* Shadow example */
+        }
+
+        /* Inset shadow */
+        .box-inset {
+            width: 200px;
+            height: 100px;
+            background-color: lightcoral;
+            margin: 50px;
+            box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.5);
+            /* Inset shadow example */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">Normal Shadow</div>
+    <div class="box-inset">Inset Shadow</div>
+
+</body>
+
+</html>
