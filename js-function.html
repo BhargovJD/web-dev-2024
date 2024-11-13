@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <script>
+        // Define a variable for the year of birth
         let doy = 1996;
+
+        // Define a variable for the current year
         let year = 2024;
-        function calAge(doy,year){
-            return year-doy;
+
+        // Function to calculate age based on year of birth and current year
+        function calAge(doy, year) {
+            return year - doy; // Subtract year of birth from the current year
         }
 
-        let currentAge = calAge(1996,2024);
+        // Call the function with specific values and store the result in currentAge
+        let currentAge = calAge(doy,year);
+
+        // Display the calculated age in an alert dialog
         alert(currentAge);
     </script>
 </head>
+
 <body>
-    
 </body>
+
 </html>
