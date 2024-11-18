@@ -1,36 +1,59 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 
 <head>
-    <title>HTML Demo Page</title>
-
-    <!-- Internal Styles :An internal style is a way to apply CSS (Cascading Style Sheets) directly within an HTML document by placing the styles inside a <style> tag,which is typically located in the <head>section of the HTML file. Internal styles affect only the specific HTML document where they are defined,and they do not apply to other pages. -->
-    <style>
-        h1 {
-            color: red;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <title>DOM Exercise</title>
 </head>
 
 <body>
+    <!-- Main heading for the document -->
+    <h1 id="title">Hello, World!</h1>
 
-        <h1>Welcome to the HTML Demo Page</h1>
+    <!-- First paragraph -->
+    <p>This is the first paragraph.</p>
 
-        <p>This is a simple page to demonstrate the usage of internal styles in HTML</p>
+    <!-- Second paragraph with an ID for easy selection -->
+    <p id="sec-para">This is the second paragraph.</p>
 
-        <p>For more information, visit our
-            <a href="https://www.google.com" target="_blank">official website</a>.
-        </p>
+    <!-- Third paragraph with a class for selection with querySelector -->
+    <p class="third-para">This is the third paragraph.</p>
 
-        <!-- The <a> tag, also known as the anchor tag, is used to create hyperlinks in HTML, which allow users to navigate to other pages, websites, or even different parts of the same page. The content between the opening and closing <a> tag becomes clickable.
+    <script>
+        // Select the h1 element as the first child of the body
+        let h1Element = document.body.firstElementChild;
 
-        Attributes: 
-        href: The href attribute defines the destination URL of the link. If href is omitted, the link won’t work.
-        target: This attribute specifies where to open the linked document. Common values are:
-        _self: Opens the link in the same tab (default behavior).
-        _blank: Opens the link in a new tab or window.-->
+        // Another way to select the first child of the body
+        h1Element = document.body.children[0];
 
+        // Display the selected h1 element in the console
+        // console.log(h1Element);
+        // Display detailed properties of the h1 element in the console
+        // console.dir(h1Element);
+
+        // Log the parent element of the h1 element
+        // console.log(h1Element.parentElement);
+
+        // Log the next sibling element of the h1 element
+        // console.log(h1Element.nextElementSibling);
+
+        // Select the second paragraph using its ID
+        let secPara = document.getElementById('sec-para');
+
+        // Log the second paragraph in the console
+        // console.log(secPara);
+        // Display detailed properties of the second paragraph in the console
+        // console.dir(secPara);
+
+        // Select the third paragraph using its class name
+        let thirdPara = document.querySelector('.third-para');
+
+        // Display detailed properties of the third paragraph in the console
+        // console.dir(thirdPara);
+
+        // Change the text content of the third paragraph
+        thirdPara.textContent = "Text changed!";
+    </script>
 </body>
 
 </html>
