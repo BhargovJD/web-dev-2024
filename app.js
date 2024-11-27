@@ -1,99 +1,70 @@
-// Import the Express framework for building the web application.
-const express = require("express");
+// Import necessary modules
+const express = require('express'); // Express is a web framework for Node.js
+const bodyParser = require('body-parser'); // Body-Parser is middleware for parsing request bodies
+const path = require('path'); // Path module to handle and transform file paths
 
-// Import the body-parser module to parse form data submitted through POST requests.
-const bodyParser = require("body-parser");
+// Initialize Express app
+const app = express(); // Create an instance of the Express application
+const PORT = 3000; // Set the port on which the server will listen
 
-// Import the fs (file system) module to read from and write to files.
-const fs = require("fs");
+// Middleware
+app.set('view engine', 'ejs'); // Set EJS as the templating engine for rendering views
+app.use(bodyParser.urlencoded({ extended: true })); // Middleware to parse URL-encoded bodies (forms)
+app.use(express.static(path.join(__dirname, 'public'))); // Serve static files (like CSS, JS, images) from the 'public' folder
 
-// Import the path module to handle file and directory paths in a platform-independent way.
-const path = require("path");
+// Dummy data (in-memory database for demonstration)
+let items = [ // This is an array of objects representing items
+  { id: 1, name: 'Item 1', description: 'This is item 1' },
+  { id: 2, name: 'Item 2', description: 'This is item 2' },
+];
 
-// Create an instance of an Express application.
-const app = express();
+// Routes
 
-// Middleware to parse URL-encoded data from form submissions.
-// `extended: true` allows nested objects in the data to be parsed.
-app.use(bodyParser.urlencoded({ extended: true }));
-
-// Define a GET route for the root URL ("/") to serve the HTML form and display stored data.
-app.get("/", (req, res) => {
-    // Path to the file where the submitted data is stored.
-    const filePath = path.join(__dirname, "submissions.txt");
-
-    // Read the data from the file asynchronously.
-    fs.readFile(filePath, "utf8", (err, data) => {
-        if (err) {
-            // If there's an error (e.g., the file doesn't exist), log it to the console.
-            console.error("Error reading file:", err);
-
-            // Set a default message to display when there's no data.
-            data = "No submissions yet.";
-        }
-
-        // Send an HTML page as a response to the client.
-        res.send(`
-            <!DOCTYPE html>
-            <html>
-            <head>
-                <title>Simple Form</title>
-            </head>
-            <body>
-                <h1>Submit Your Information</h1>
-                <!-- Form for the user to submit their name and email. -->
-                <form action="/submit" method="POST">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required><br><br>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required><br><br>
-                    <button type="submit">Submit</button>
-                </form>
-                <hr>
-                <!-- Display the data stored in the file. -->
-                <h2>Submitted Data:</h2>
-                <pre>${data}</pre>
-            </body>
-            </html>
-        `);
-    });
+// Route to display all items on the homepage
+app.get('/', (req, res) => {
+  res.render('index', { items }); // Render the 'index' view and pass the 'items' data to it
 });
 
-// Define a POST route to handle form submissions.
-app.post("/submit", (req, res) => {
-    // Extract the name and email from the form data.
-    const { name, email } = req.body;
-
-    // Format the data to be saved in the file.
-    const data = `Name: ${name}, Email: ${email}\n`;
-
-    // Path to the file where the data will be stored.
-    const filePath = path.join(__dirname, "submissions.txt");
-
-    // Append the data to the file. If the file doesn't exist, it will be created.
-    fs.appendFile(filePath, data, (err) => {
-        if (err) {
-            // Log an error if there's an issue with writing to the file.
-            console.error("Error writing to file:", err);
-
-            // Send a 500 status code (Internal Server Error) to the client.
-            res.status(500).send("Internal Server Error");
-            return;
-        }
-
-        // Redirect the client back to the root URL ("/") after successful submission.
-        res.redirect("/");
-    });
+// Route to show the form for adding a new item
+app.get('/add', (req, res) => {
+  res.render('add'); // Render the 'add' view which will contain a form for adding items
 });
 
-// Define the port number on which the server will listen for incoming requests.
-const PORT = 3000;
+// Route to handle form submission for adding a new item
+app.post('/add', (req, res) => {
+  const { name, description } = req.body; // Get 'name' and 'description' from the submitted form data
+  const id = items.length ? items[items.length - 1].id + 1 : 1; // Generate a new ID for the new item (based on the last item's ID)
+  console.log(items[items.length - 1].id); // Log the ID of the last item (for debugging)
+  items.push({ id, name, description }); // Add the new item to the 'items' array
+  console.log(items); // Log the entire items array (for debugging)
+  res.redirect('/'); // Redirect the user back to the homepage
+});
 
-// Start the server and log a message to the console indicating the URL.
+// Route to display the form for editing an item (based on the item's ID)
+app.get('/edit/:id', (req, res) => {
+  const item = items.find(i => i.id == req.params.id); // Find the item by its ID from the URL parameters
+  res.render('edit', { item }); // Render the 'edit' view and pass the found item to it
+});
+
+// Route to handle form submission for editing an item
+app.post('/edit/:id', (req, res) => {
+  const { id } = req.params; // Get the ID of the item to edit from the URL parameters
+  const { name, description } = req.body; // Get the new 'name' and 'description' from the form data
+  const item = items.find(i => i.id == id); // Find the item to edit by ID
+  if (item) { // If the item is found
+    item.name = name; // Update the item's name
+    item.description = description; // Update the item's description
+  }
+  res.redirect('/'); // Redirect the user back to the homepage
+});
+
+// Route to handle the deletion of an item
+app.post('/delete/:id', (req, res) => {
+  items = items.filter(i => i.id != req.params.id); // Remove the item with the matching ID from the 'items' array
+  res.redirect('/'); // Redirect the user back to the homepage
+});
+
+// Start the server
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server running on http://localhost:${PORT}`); // Log a message indicating the server is running
 });
-
-
-
-// Run this file: node app.js
